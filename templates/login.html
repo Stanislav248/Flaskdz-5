@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Вхід</h2>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.email.label }}<br>
+            {{ form.email() }}
+            {% for error in form.email.errors %}<span class="error-msg">[{{ error }}]</span>{% endfor %}
+        </div>
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password() }}
+            {% for error in form.password.errors %}<span class="error-msg">[{{ error }}]</span>{% endfor %}
+        </div>
+        <div>
+            {{ form.remember() }} {{ form.remember.label }}
+        </div>
+        <div>{{ form.submit() }}</div>
+    </form>
+    <p>Ще немає акаунта? <a href="{{ url_for('register') }}">Зареєструватися</a></p>
+{% endblock %}
